@@ -34,16 +34,16 @@ class KeyBoard extends Component {
 	    // Right
 	    
           <td>
-            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightLittleFingerGroup} />
-          </td>
-          <td>
-            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightRingFingerGroup} />
+            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightIndexFingerGroup} />
           </td>
           <td>
             <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightMiddleFingerGroup} />
           </td>
           <td>
-            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightIndexFingerGroup} />
+            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightRingFingerGroup} />
+          </td>
+          <td>
+            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightLittleFingerGroup} />
           </td>
 	    </ tbody>
         </table>
