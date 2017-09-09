@@ -6,7 +6,7 @@ class App extends Component {
   constructor () {
     super()
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.state = { practiseText: '' }
+    this.state = { practiseText: '', userTypedText: '' }
   }
 
   handleInputChange (e) {
@@ -18,7 +18,10 @@ class App extends Component {
     return (
       <div>
         <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChange} />
-        <KeyBoard pressedKey={this.state.practiseText[this.state.practiseText.length - 1]} />
+        <br />
+        <input type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChange} />
+        <br />
+        <KeyBoard pressedKey={this.state.practiseText[this.state.userTypedText.length]} />
       </div>
     )
   }
