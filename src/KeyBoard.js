@@ -34,7 +34,6 @@ class KeyBoard extends Component {
           <td>
             <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={leftIndexFingerGroup2} />
           </td>
-	    
           <td>
             <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightIndexFingerGroup2} />
           </td>

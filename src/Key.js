@@ -18,7 +18,7 @@ class Key extends Component {
     
     if (this.props.doesContainPressedKey) {
       this.keyCss['textDecoration'] = 'underline'
-    }
+    } else { this.keyCss['textDecoration'] = 'none' }
     console.log(this.props.doesContainPressedKey)
     return (
       <div id='key' name={this.props.keyName} style={this.keyCss} > {this.props.keyName} </ div>
@@ -28,6 +28,15 @@ class Key extends Component {
     if (this.props.pressedKey === this.props.keyName) { this.setState({ 
 	                                                               isPressed: true })
     } else { this.setState({isPressed: false}) }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.pressedKey !== this.props.pressedKey) {
+      if (nextProps.pressedKey === this.props.keyName) { this.setState({ 
+                                                                         isPressed: true })
+      } else { this.setState({isPressed: false}) }
+    
+    }
   }
 }
 

@@ -18,11 +18,22 @@ class KeyGroup extends Component {
   }
 
   componentDidMount () {
-    console.log('log :', this.props.keysInGroup.includes(this.props.pressedKey))
     if (this.props.keysInGroup.includes(this.props.pressedKey)) {
       this.setState({doesContainPressedKey: true})
     } else {
       this.setState({doesContainPressedKey: false})
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log('log :', nextProps.pressedKey)
+    
+    if (nextProps.pressedKey !== this.props.pressedKey) {
+      if (this.props.keysInGroup.includes(nextProps.pressedKey)) {
+        this.setState({doesContainPressedKey: true})
+      } else {
+        this.setState({doesContainPressedKey: false})
+      }
     }
   }
 }
