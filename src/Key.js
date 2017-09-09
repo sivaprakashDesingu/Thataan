@@ -8,15 +8,26 @@ class Key extends Component {
       width: '30px',
       height: '30px',
       background: `${(this.state.isPressed ? 'blue' : 'grey')}`,
-
-      textAlign: 'center'
+      textAlign: 'center',
+      textDecoration: 'none'
     }
   }
 
   render () {
+    this.keyCss['background'] = `${(this.state.isPressed ? 'blue' : 'grey')}`
+    
+    if (this.props.doesContainPressedKey) {
+      this.keyCss['textDecoration'] = 'underline'
+    }
+    console.log(this.props.doesContainPressedKey)
     return (
-      <div id='key' style={this.keyCss}> a </ div>
+      <div id='key' name={this.props.keyName} style={this.keyCss} > {this.props.keyName} </ div>
     )
+  }
+  componentDidMount () {
+    if (this.props.pressedKey === this.props.keyName) { this.setState({ 
+	                                                               isPressed: true })
+    } else { this.setState({isPressed: false}) }
   }
 }
 

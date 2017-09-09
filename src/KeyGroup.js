@@ -1,19 +1,29 @@
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
 import Key from './Key'
 
 class KeyGroup extends Component {
   constructor () {
     super()
-    this.state = {doesContainsPressedKey: false}
+    this.state = {doesContainPressedKey: false}
+//    this.keysInGroup = this.props.keysInGroup
   }
   render () {
-    let keys = ['q', 'a', 'z']
+	  // Alert at renderedKeys 
+    let renderedKeys = this.props.keysInGroup.map((keyName) => { return (<Key key={keyName} keyName={keyName} doesContainPressedKey={this.state.doesContainPressedKey} pressedKey={this.props.pressedKey} />) })
 
-    let renderedKeys = keys.map((keyName) => { return (<Key keyName={keyName} />) })
     return (
       <div id='keyGroup'>
         {renderedKeys}
       </ div>)
+  }
+
+  componentDidMount () {
+    console.log('log :', this.props.keysInGroup.includes(this.props.pressedKey))
+    if (this.props.keysInGroup.includes(this.props.pressedKey)) {
+      this.setState({doesContainPressedKey: true})
+    } else {
+      this.setState({doesContainPressedKey: false})
+    }
   }
 }
 
