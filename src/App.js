@@ -7,7 +7,7 @@ import KeyBoard from './KeyBoard'
 class App extends Component {
   render () {
     return (
-        <KeyBoard pressedKey=';' />
+        <KeyBoard pressedKey='g' />
     )
   }
 }
