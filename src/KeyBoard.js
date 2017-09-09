@@ -4,17 +4,18 @@ import KeyGroup from './KeyGroup.js'
 class KeyBoard extends Component {
   render () {
 	  // Left finger groups
-    let leftLittleFingerGroup = ['q', 'a', 'z']
-    let leftRingFingerGroup = ['w', 's', 'x']
-    let leftMiddleFingerGroup = ['e', 'd', 'c']
-    let leftIndexFingerGroup = ['r', 'f', 'v']//, 't', 'g', 'b']
-    let leftIndexFingerGroup2 = ['t', 'g', 'b']
+    let leftLittleFingerGroup = ['ஆ', 'அ', 'ஔ']
+    let leftRingFingerGroup = ['ஈ', 'இ', 'ஓ']
+    let leftMiddleFingerGroup = ['ஊ', 'உ', 'ஒ']
+    let leftIndexFingerGroup = ['ஐ', '்', 'வ']
+    let leftIndexFingerGroup2 = ['ஏ', 'எ', 'ங']
 //	   Right finger groups
-    let rightLittleFingerGroup = ['p', ';', '/']
-    let rightRingFingerGroup = ['o', 'l', '.']
-    let rightMiddleFingerGroup = ['i', 'k', ',']
-    let rightIndexFingerGroup = ['u', 'j', 'm']//, 'y', 'h', 'n']
-    let rightIndexFingerGroup2 = ['y', 'h', 'n']
+    let rightLittleFingerGroup2 = ['ச','ய']
+    let rightLittleFingerGroup = ['ண', 'ந', 'ழ']
+    let rightRingFingerGroup = ['ட', 'த', '.']
+    let rightMiddleFingerGroup = ['ன', 'ம', ',']
+    let rightIndexFingerGroup = ['ற', 'ப', 'ர']
+    let rightIndexFingerGroup2 = ['ள', 'க', 'ல']
 
     return (
         <table>
@@ -48,6 +49,9 @@ class KeyBoard extends Component {
           </td>
           <td>
             <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightLittleFingerGroup} />
+          </td>
+          <td>
+            <KeyGroup pressedKey={this.props.pressedKey} keysInGroup={rightLittleFingerGroup2} />
           </td>
 	    </ tbody>
         </table>
