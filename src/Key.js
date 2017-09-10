@@ -11,6 +11,7 @@ class Key extends Component {
       textAlign: 'center',
       textDecoration: 'none'
     }
+    this.aliasMap = {'ஆ':'ா' }
   }
 
   render () {
@@ -32,8 +33,7 @@ class Key extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.pressedKey !== this.props.pressedKey) {
-      if (nextProps.pressedKey === this.props.keyName) { this.setState({ 
-                                                                         isPressed: true })
+      if (nextProps.pressedKey === this.props.keyName || nextProps.pressedKey === this.aliasMap[this.props.keyName]) { this.setState({ isPressed: true })
       } else { this.setState({isPressed: false}) }
     
     }
