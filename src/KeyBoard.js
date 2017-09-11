@@ -31,8 +31,22 @@ class KeyBoard extends Component {
       rightLittleFingerGroup,
       rightLittleFingerGroup2
     ]
+    let layer2 = [
+      ['ஸ',  '௹',  '௳'], // Left little finger group
+      ['ஷ', '௺', '௴'],
+      ['ஜ', '௸', '௵'],
+      ['ஹ' , 'ஃ', '௶'],
+      ['க்ஷ', '🌕', '௷'],
 
-    let renderedKeyGroups = layer1.map((keyGroup, key) => {
+      ['ஶ்ரீ', '', 'ௐ'], // Right index finger group 1
+      ['*', '"', '<'],
+      ['[',  '௱',  '>'],
+      [']', ';', '?'],
+      ['{', '\'']
+      
+    ]
+
+    let renderedKeyGroups = layer2.map((keyGroup, key) => {
       return (
         <td>
           <KeyGroup key={keyGroup} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
