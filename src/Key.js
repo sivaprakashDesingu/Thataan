@@ -25,9 +25,9 @@ class Key extends Component {
   }
 
   componentDidMount () {
-   if (this.props.pressedKey === this.props.keyName) {
-     this.setState({ isPressed: true})
-   } 
+    if (this.props.pressedKey === this.props.keyName) {
+      this.setState({ isPressed: true })
+    }
   }
 
   componentWillReceiveProps (nextProps) {

@@ -6,7 +6,7 @@ class KeyBoard extends Component {
     for (let i = 0; i < arrayOfArray.length; i++) {
       for (let j = 0; j < arrayOfArray[i].length; j++) {
         if (this.props.pressedKey === arrayOfArray[i][j]) {
-          return true         	
+          return true
         }
       }
     }
