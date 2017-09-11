@@ -17,6 +17,17 @@ class KeyGroup extends Component {
       </ div>)
   }
 
+  componentDidMount () {
+  
+    
+      if (this.props.keysInGroup.includes(this.props.pressedKey)) {
+        this.setState({doesContainPressedKey: true})
+      } else {
+        this.setState({doesContainPressedKey: false})
+      }
+    }
+  
+
   componentWillReceiveProps (nextProps) {
     
     if (nextProps.pressedKey !== this.props.pressedKey) {

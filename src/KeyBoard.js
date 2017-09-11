@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import KeyGroup from './KeyGroup.js'
 
 class KeyBoard extends Component {
+  isItemPresentInArrayOfArray (arrayOfArray = []) {
+    for (let i = 0; i < arrayOfArray.length; i++) {
+      for (let j = 0; j < arrayOfArray[i].length; j++) {
+        if (this.props.pressedKey === arrayOfArray[i][j]) {
+          return true         	
+        }
+      }
+    }
+    return false
+  }
   render () {
 	  // Left finger groups
     let leftLittleFingerGroup = ['ஆ', 'அ', 'ஔ']
@@ -43,23 +53,34 @@ class KeyBoard extends Component {
       ['[',  '௱',  '>'],
       [']', ';', '?'],
       ['{', '\'']
-      
     ]
+    let renderedKeyGroups = null
 
-    let renderedKeyGroups = layer2.map((keyGroup, key) => {
-      return (
-        <td>
-          <KeyGroup key={keyGroup} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
-        </td>
+    if (this.isItemPresentInArrayOfArray(layer1)) {
+      renderedKeyGroups = layer1.map((keyGroup, key) => {
+        return (
+          <td>
+            <KeyGroup key={keyGroup} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
+          </td>
+        )
+      }
+        )
+    } else {
+      renderedKeyGroups = layer2.map((keyGroup, key) => {
+        return (
+          <td>
+            <KeyGroup key={keyGroup} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
+          </td>
+        )
+      }
       )
     }
-                                                       )
     return (
-        <table>
-	    <tbody>
-            {renderedKeyGroups}
-	    </ tbody>
-        </table>
+      <table>
+        <tbody>
+          {renderedKeyGroups}
+        </ tbody>
+      </table>
     )
   }
 }

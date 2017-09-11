@@ -24,12 +24,27 @@ class Key extends Component {
     )
   }
 
+  componentDidMount () {
+   if (this.props.pressedKey === this.props.keyName) {
+     this.setState({ isPressed: true})
+   } 
+  }
+
   componentWillReceiveProps (nextProps) {
+    console.log('nextProps: ', nextProps, 'thisProps: ', this.props)
     if (nextProps.pressedKey !== this.props.pressedKey) {
       if (nextProps.pressedKey === this.props.keyName || nextProps.pressedKey === this.aliasMap[this.props.keyName]) {
         this.setState({ isPressed: true })
       } else { this.setState({isPressed: false}) }
     }
+/*    if (nextProps.keyName !== this.props.keyName) {
+      if (nextProps.keyName === this.props.pressedKey) {
+        this.setState({ isPressed: true })
+      } else {
+        this.setState({isPressed: false})
+      }
+    }
+    */
   }
 }
 
