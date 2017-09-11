@@ -19,7 +19,6 @@ class Key extends Component {
     if (this.props.doesContainPressedKey) {
       this.keyCss['textDecoration'] = 'underline'
     } else { this.keyCss['textDecoration'] = 'none' }
-    console.log(this.props.doesContainPressedKey)
     return (
       <div id='key' name={this.props.keyName} style={this.keyCss} > {this.props.keyName} </ div>
     )

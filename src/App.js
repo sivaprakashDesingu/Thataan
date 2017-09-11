@@ -12,17 +12,18 @@ class App extends Component {
 
   handleInputChangePractiseText (e) {
     let targetValue = e.target.value
-    let targetName = e.target.name
     this.setState({ practiseText: targetValue })
   }
 
   handleInputChangeUserTypedText (e) {
-    let userTypedText = e.target.value
+    let userTypedTextInput = e.target.value
     let practiseText = this.state.practiseText
-    let compareIndex = userTypedText.length - 1
-    if (userTypedText[compareIndex] === practiseText[compareIndex]) {
-      this.setState({ userTypedText: userTypedText })
+    let compareIndex = userTypedTextInput.length - 1
+    console.log('input: ', userTypedTextInput[compareIndex], 'practise: ', practiseText[compareIndex])
+    if (userTypedTextInput[compareIndex] !== practiseText[compareIndex]) {
+      console.log('input letter doesnot match the toPractise letter')
     }
+    this.setState({ userTypedText: userTypedTextInput })
   }
   render () {
     return (

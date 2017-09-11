@@ -18,7 +18,6 @@ class KeyGroup extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('log :', nextProps.pressedKey)
     
     if (nextProps.pressedKey !== this.props.pressedKey) {
       if (this.props.keysInGroup.includes(nextProps.pressedKey)) {
