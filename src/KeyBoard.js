@@ -20,12 +20,19 @@ class KeyBoard extends Component {
          ['ண', 'ந', 'ழ'], // rightLittleFingerGroup,
          ['ச', 'ய'] // rightLittleFingerGroup2
     ]
-    this.layer1Names = [
+    this.groupNames = [
       'left little finger',
       'left ring finger',
       'left middle finger',
       'left index finger',
-      'left index finger']
+      'left index finger extended',
+      'right index finger extended',
+      'right index finger',
+      'right middle finger',
+      'right ring finger',
+      'right little finger',
+      'right little finger extened'
+    ]
     this.layer2 = [
           ['ஸ',  '௹',  '௳'], // Left little finger group
           ['ஷ', '௺', '௴'],
@@ -38,14 +45,6 @@ class KeyBoard extends Component {
           ['[',  '௱',  '>'],
           [']', ';', '?'],
           ['{', '\'']
-    ]
-    this.layer2Names = [
-      'right index finger',
-      'right index finger',
-      'right middle finger',
-      'right ring finger',
-      'right little finger',
-      'right little finger'
     ]
   }
   isItemPresentInArrayOfArray (arrayOfArray = [], elementToFind) { // Return outer array index if element found else returns null
@@ -68,33 +67,30 @@ class KeyBoard extends Component {
       }
     }
   }
-  componentWillMount () {
-  
-  }
-  render () {
-	  // Left finger groups
-   
-    let renderedKeyGroups = null
 
+  render () {
+  // Left finger groups
+    let renderedKeyGroups = null
     if (this.state.currentLayer === 'layer1') {
       renderedKeyGroups = this.layer1.map((keyGroup, index) => {
         return (
           <td>
-            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} keyGroupName={this.layer1Names[index]} />
+            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} keyGroupName={this.groupNames[index]} />
           </td>
         )
       }
         )
     } else {
-      renderedKeyGroups = this.layer2.map((keyGroup, key) => {
+      renderedKeyGroups = this.layer2.map((keyGroup, index) => {
         return (
           <td>
-            <KeyGroup key={keyGroup} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
+            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} keyGroupName={this.groupNames[index]} />
           </td>
         )
       }
       )
     }
+    let groupWhichContainPressedKey = this.state.currentLayer === 'layer1' ? this.isItemPresentInArrayOfArray(this.layer1, this.props.pressedKey) : this.isItemPresentInArrayOfArray(this.layer2, this.props.pressedKey)
     return (
       <div>
         <div>
@@ -105,7 +101,7 @@ class KeyBoard extends Component {
           </table>
         </ div>
         <div>
-          <GuideHand groupIdOfPressedKey={this.layer1Names.concat(this.layer2Names)[this.isItemPresentInArrayOfArray(this.layer1, this.props.pressedKey)]} />
+          <GuideHand groupIdOfPressedKey={groupWhichContainPressedKey} />
         </ div>
       </ div>
     )

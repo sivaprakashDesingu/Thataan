@@ -39,14 +39,6 @@ class Key extends Component {
         this.setState({ isPressed: true })
       } else { this.setState({isPressed: false}) }
     }
-/*    if (nextProps.keyName !== this.props.keyName) {
-      if (nextProps.keyName === this.props.pressedKey) {
-        this.setState({ isPressed: true })
-      } else {
-        this.setState({isPressed: false})
-      }
-    }
-    */
   }
 }
 
