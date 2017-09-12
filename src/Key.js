@@ -24,6 +24,9 @@ class Key extends Component {
     )
   }
 
+  componentWillMount () {
+  }
+
   componentDidMount () {
     if (this.props.pressedKey === this.props.keyName) {
       this.setState({ isPressed: true })
@@ -31,7 +34,6 @@ class Key extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('nextProps: ', nextProps, 'thisProps: ', this.props)
     if (nextProps.pressedKey !== this.props.pressedKey) {
       if (nextProps.pressedKey === this.props.keyName || nextProps.pressedKey === this.aliasMap[this.props.keyName]) {
         this.setState({ isPressed: true })
