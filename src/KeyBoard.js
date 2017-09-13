@@ -6,6 +6,7 @@ class KeyBoard extends Component {
   constructor (props) {
     super(props)
     this.state = {currentLayer: 'layer1'}
+    this.aliasMap = ['ா', 'ௌ'] //'ஈ':' ீ', 'இ': ' ி' , 'ஓ': 'ோ', 'ஊ': 'ூ', 'உ': 'ு', 'ஒ': 'ொ']
     this.layer1 = [
          ['ஆ', 'அ', 'ஔ'], // leftLittleFingerGroup,
          ['ஈ', 'இ', 'ஓ'],  // leftRingFingerGroup,
@@ -60,7 +61,7 @@ class KeyBoard extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.pressedKey !== this.props.pressedKey) {
-      if (this.isItemPresentInArrayOfArray(this.layer1, nextProps.pressedKey) !== null) {
+      if ((this.isItemPresentInArrayOfArray(this.layer1, nextProps.pressedKey) !== null) || (this.aliasMap.includes(nextProps.pressedKey))) {
         this.setState({currentLayer: 'layer1'})
       } else {
         this.setState({currentLayer: 'layer2'})
