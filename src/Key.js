@@ -11,7 +11,7 @@ class Key extends Component {
       textAlign: 'center',
       textDecoration: 'none'
     }
-    this.aliasMap = { 'ஆ': 'ா', 'ஔ': 'ௌ', 'ஈ':' ீ', 'இ': ' ி' , 'ஓ': 'ோ', 'ஊ': 'ூ', 'உ': 'ு', 'ஒ': 'ொ'}
+    this.aliasMap = { 'ஆ': 'ா', 'ஔ': 'ௌ', 'ஈ':' ீ', 'இ': ' ி' , 'ஓ': 'ோ', 'ஊ': 'ூ', 'உ': 'ு', 'ஒ': 'ொ', 'ஐ': 'ை', 'எ': 'ெ', 'ஏ': 'ே'}
   }
 
   render () {
