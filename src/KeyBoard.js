@@ -59,6 +59,10 @@ class KeyBoard extends Component {
     return null
   }
 
+  componentDidMount () {
+    this.setState({currentLayer: 'layer1'})
+  }
+
   componentWillReceiveProps (nextProps) {
     if (nextProps.pressedKey !== this.props.pressedKey) {
       if ((this.isItemPresentInArrayOfArray(this.layer1, nextProps.pressedKey) !== null) || (this.aliasMap.includes(nextProps.pressedKey))) {
