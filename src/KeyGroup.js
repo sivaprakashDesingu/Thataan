@@ -9,7 +9,6 @@ class KeyGroup extends Component {
   }
   render () {
   // Alert at renderedKeys
-    console.log('props ', this.props)
     let renderedKeys = this.props.keysInGroup.map((keyName) => { return (<Key key={keyName} keyName={keyName} doesContainPressedKey={this.state.doesContainPressedKey} pressedKey={this.props.pressedKey} />) })
 
     return (
