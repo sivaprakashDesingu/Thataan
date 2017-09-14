@@ -10,6 +10,7 @@ class App extends Component {
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
     this.state = { practiseText: '', userTypedText: '' }
     this.mismatchIndex = []
+    this.compareIndex = -1
   }
 
   handleInputChangePractiseText (e) {
@@ -21,20 +22,6 @@ class App extends Component {
   handleInputChangeUserTypedText (e) {
     let userTypedTextInput = e.target.value
     this.setState({ userTypedText: userTypedTextInput })
-
-  /*  console.log('onchange fired ', userTypedTextInput)
-    let practiseText = this.state.practiseText
-    let compareIndex = this.state.userTypedText.length - 1
-    if (userTypedTextInput[compareIndex] !== practiseText[compareIndex] && this.mismatchIndex.includes(compareIndex) === false) {
-      this.mismatchIndex.push(compareIndex)
-      console.log('input letter doesnot match the toPractise letter', 'input :',userTypedTextInput[compareIndex], 'compare :', practiseText[compareIndex], 'compare index :', compareIndex)
-    }
-
-    if (this.mismatchIndex[this.mismatchIndex.length - 1] > compareIndex) {
-      this.mismatchIndex.pop()
-    }
-    console.log('mismatchIndex', this.mismatchIndex)
-    */
   }
 
   handleOnKeyDown (e) {
@@ -43,30 +30,34 @@ class App extends Component {
 
     console.log('onchange fired ', userTypedTextInput)
     let practiseText = this.state.practiseText
-    let compareIndex = userTypedTextInput.length - 1
-    if (userTypedTextInput[compareIndex] !== practiseText[compareIndex] && this.mismatchIndex.includes(compareIndex) === false) {
-      this.mismatchIndex.push(compareIndex)
-      console.log('input letter doesnot match the toPractise letter', 'input :',userTypedTextInput[compareIndex], 'compare :', practiseText[compareIndex], 'compare index :', compareIndex)
+    this.compareIndex = userTypedTextInput.length - 1
+    if (userTypedTextInput[this.compareIndex] !== practiseText[this.compareIndex] && this.mismatchIndex.includes(this.compareIndex) === false) {
+      this.mismatchIndex.push(this.compareIndex)
+      console.log('input letter doesnot match the toPractise letter', 'input :',userTypedTextInput[this.compareIndex], 'compare :', practiseText[this.compareIndex], 'compare index :', this.compareIndex)
     }
 
-    if (this.mismatchIndex[this.mismatchIndex.length - 1] > compareIndex) {
+    if (this.mismatchIndex[this.mismatchIndex.length - 1] > this.compareIndex) {
       this.mismatchIndex.pop()
     }
     console.log('mismatchIndex', this.mismatchIndex)
 
-    let userTypedTextInput2 = e.target.value
     this.setState({ userTypedText: userTypedTextInput })
   }
 
 
-  highlightWronglyTypedLetters (practiseText, mismatchIndex) {
+  highlightTypedLetters (practiseText, mismatchIndex, compareIndex) {
     console.log('inside hightlight', practiseText, mismatchIndex)
     let practiseCharactersArray = practiseText.split('')
     practiseCharactersArray = practiseCharactersArray.map((v, i, a) => {
-      if (mismatchIndex.includes(i)) { return <mark>{v}</mark> }
+      if (mismatchIndex.includes(i)) {
+        return <mark>{v}</mark>
+      }
+      else if (i <= compareIndex) {
+        return <u>{a[i]}</u>
+      }
       else {
         return a[i]
-    }
+      }
     })
     console.log(practiseCharactersArray)
     return (practiseCharactersArray)
@@ -82,9 +73,11 @@ class App extends Component {
         <input type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
         <br />
         <div>
-          {this.highlightWronglyTypedLetters(this.state.practiseText, this.mismatchIndex)}
+          {this.highlightTypedLetters(this.state.practiseText, this.mismatchIndex, this.compareIndex)}
         </ div>
-//	<div>M<mark>O</mark>NOJ</div>
+        <div>
+          {this.state.practiseText}
+        </ div>
         <br />
         <KeyBoard pressedKey={this.state.practiseText[this.state.userTypedText.length]} />
       </div>
