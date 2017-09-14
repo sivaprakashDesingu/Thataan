@@ -8,6 +8,7 @@ class KeyBoard extends Component {
     this.state = {currentLayer: 'layer1'}
     this.aliasMap = ['ா', 'ௌ', ' ீ',  ' ி' ,  'ோ',  'ூ',  'ு',  'ொ',  'ை',  'ெ', 'ே']
     this.layer1 = [
+	 ['Shift'],
          ['ஆ', 'அ', 'ஔ'], // leftLittleFingerGroup,
          ['ஈ', 'இ', 'ஓ'],  // leftRingFingerGroup,
          ['ஊ', 'உ', 'ஒ'], // leftMiddleFingerGroup,
@@ -19,22 +20,11 @@ class KeyBoard extends Component {
          ['ன', 'ம', ','],   // rightMiddleFingerGroup,
          ['ட', 'த', '.'], // rightRingFingerGroup,
          ['ண', 'ந', 'ழ'], // rightLittleFingerGroup,
-         ['ச', 'ய'] // rightLittleFingerGroup2
-    ]
-    this.groupNames = [
-      'left little finger',
-      'left ring finger',
-      'left middle finger',
-      'left index finger',
-      'left index finger extended',
-      'right index finger extended',
-      'right index finger',
-      'right middle finger',
-      'right ring finger',
-      'right little finger',
-      'right little finger extened'
+         ['ச', 'ய'], // rightLittleFingerGroup2
+	 ['Shift']
     ]
     this.layer2 = [
+	  ['Shift'],
           ['ஸ',  '௹',  '௳'], // Left little finger group
           ['ஷ', '௺', '௴'],
           ['ஜ', '௸', '௵'],
@@ -45,7 +35,8 @@ class KeyBoard extends Component {
           ['*', '"', '<'],
           ['[',  '௱',  '>'],
           [']', ';', '?'],
-          ['{', '\'']
+          ['{', '\''],
+	  ['Shift']
     ]
   }
   isItemPresentInArrayOfArray (arrayOfArray = [], elementToFind) { // Return outer array index if element found else returns null
@@ -80,16 +71,23 @@ class KeyBoard extends Component {
       renderedKeyGroups = this.layer1.map((keyGroup, index) => {
         return (
           <td>
-            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} keyGroupName={this.groupNames[index]} />
+            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
           </td>
         )
       }
         )
     } else {
       renderedKeyGroups = this.layer2.map((keyGroup, index) => {
+        if (keyGroup.includes('Shift')) {
+          return (
+            <td>
+              <KeyGroup key={index} pressedKey={'Shift'} keysInGroup={keyGroup} />
+            </td>
+          )
+        }
         return (
           <td>
-            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} keyGroupName={this.groupNames[index]} />
+            <KeyGroup key={index} pressedKey={this.props.pressedKey} keysInGroup={keyGroup} />
           </td>
         )
       }
