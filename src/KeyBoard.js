@@ -19,8 +19,9 @@ class KeyBoard extends Component {
          ['ற', 'ப', 'ர'], // rightIndexFingerGroup1,
          ['ன', 'ம', ','],   // rightMiddleFingerGroup,
          ['ட', 'த', '.'], // rightRingFingerGroup,
-         ['ண', 'ந', 'ழ'], // rightLittleFingerGroup,
+         ['ண', 'ந', 'ழ'], // rightLittleFingerGroup1,
          ['ச', 'ய'], // rightLittleFingerGroup2
+	 ['ஞ'],       // rightLittleFingerGroup3
 	 ['Shift']
     ]
     this.layer2 = [
@@ -39,6 +40,7 @@ class KeyBoard extends Component {
 	  ['Shift']
     ]
   }
+
   isItemPresentInArrayOfArray (arrayOfArray = [], elementToFind) { // Return outer array index if element found else returns null
     for (let i = 0; i < arrayOfArray.length; i++) {
       for (let j = 0; j < arrayOfArray[i].length; j++) {

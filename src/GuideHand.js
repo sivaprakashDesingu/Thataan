@@ -5,40 +5,49 @@ class GuideHand extends Component {
     let x = '0px' // left
     let y = '0px' // top
     switch (groupIdOfPressedKey) {
-      case 0: // left little finger
+      case 1: // left little finger
         x = '10px'
         y = '150px'
         break
-      case 1: // left ring finger
+      case 2: // left ring finger
         x = '60px'
         y = '70px'
         break
-      case 2: // left middle finger
+      case 3: // left middle finger
         x = '140px'
         y = '30px'
         break
-      case 3: // left index finger
+      case 4: // left index finger
         x = '230px'
         y = '30px'
         break
-      case 4:
-        x = '290px'
-        y = '30px'
-        break
       case 5:
-        x = '350px'
+        x = '230px'
         y = '30px'
         break
       case 6:
-        x = '350px'
+        x = '290px'
         y = '30px'
         break
       case 7:
+        x = '290px'
+        y = '30px'
+        break
+      case 8:
+        x = '350px'
+        y = '30px'
+        break
+      case 9:
+        x = '435px'
+        y = '30px'
+        break
+      case 10:
         x = '435px'
         y = '30px'
     }
     return [x, y]
   }
+
   render () {
     let markerPosition = this.getMarkerPosition(this.props.groupIdOfPressedKey)
     let guideMarkerCss = {

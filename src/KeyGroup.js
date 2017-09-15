@@ -5,7 +5,6 @@ class KeyGroup extends Component {
   constructor () {
     super()
     this.state = {doesContainPressedKey: false}
-//    this.keysInGroup = this.props.keysInGroup
   }
   render () {
   // Alert at renderedKeys

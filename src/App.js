@@ -18,7 +18,6 @@ class App extends Component {
     this.setState({ practiseText: targetValue })
   }
 
-
   handleInputChangeUserTypedText (e) {
     let userTypedTextInput = e.target.value
     this.setState({ userTypedText: userTypedTextInput })
@@ -26,14 +25,12 @@ class App extends Component {
 
   handleOnKeyDown (e) {
     let userTypedTextInput = e.target.value
-  //  this.setState({ userTypedText: userTypedTextInput })
-
     console.log('onchange fired ', userTypedTextInput)
     let practiseText = this.state.practiseText
     this.compareIndex = userTypedTextInput.length - 1
     if (userTypedTextInput[this.compareIndex] !== practiseText[this.compareIndex] && this.mismatchIndex.includes(this.compareIndex) === false) {
       this.mismatchIndex.push(this.compareIndex)
-      console.log('input letter doesnot match the toPractise letter', 'input :',userTypedTextInput[this.compareIndex], 'compare :', practiseText[this.compareIndex], 'compare index :', this.compareIndex)
+      console.log('input letter doesnot match the toPractise letter', 'input :', userTypedTextInput[this.compareIndex], 'compare :', practiseText[this.compareIndex], 'compare index :', this.compareIndex)
     }
 
     if (this.mismatchIndex[this.mismatchIndex.length - 1] > this.compareIndex) {
@@ -43,7 +40,6 @@ class App extends Component {
 
     this.setState({ userTypedText: userTypedTextInput })
   }
-
 
   highlightTypedLetters (practiseText, mismatchIndex, compareIndex) {
     console.log('inside hightlight', practiseText, mismatchIndex)
