@@ -21,11 +21,11 @@ class KeyBoard extends Component {
          ['ட', 'த', '.'], // rightRingFingerGroup,
          ['ண', 'ந', 'ழ'], // rightLittleFingerGroup1,
          ['ச', 'ய'], // rightLittleFingerGroup2
-	 ['ஞ'],       // rightLittleFingerGroup3
-	 ['Shift']
+	       ['ஞ'],       // rightLittleFingerGroup3
+	       ['Shift']
     ]
     this.layer2 = [
-	  ['Shift'],
+	        ['Shift'],
           ['ஸ',  '௹',  '௳'], // Left little finger group
           ['ஷ', '௺', '௴'],
           ['ஜ', '௸', '௵'],
@@ -37,7 +37,7 @@ class KeyBoard extends Component {
           ['[',  '௱',  '>'],
           [']', ';', '?'],
           ['{', '\''],
-	  ['Shift']
+          ['Shift']
     ]
   }
 
