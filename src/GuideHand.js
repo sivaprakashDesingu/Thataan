@@ -26,24 +26,33 @@ class GuideHand extends Component {
         y = '30px'
         break
       case 6:
-        x = '290px'
-        y = '30px'
+        x = '425px'
+        y = '40px'
         break
       case 7:
-        x = '290px'
-        y = '30px'
+        x = '425px'
+        y = '40px'
         break
       case 8:
-        x = '350px'
-        y = '30px'
+        x = '530px'
+        y = '40px'
         break
       case 9:
-        x = '435px'
-        y = '30px'
+        x = '600px'
+        y = '80px'
         break
       case 10:
-        x = '435px'
-        y = '30px'
+        x = '650px'
+        y = '150px'
+        break
+      case 11:
+        x = '650px'
+        y = '150px'
+        break
+      case 12:
+        x = '650px'
+        y = '150px'
+        break
     }
     return [x, y]
   }
@@ -61,7 +70,6 @@ class GuideHand extends Component {
     }
     return (
       <div>
-        <h1> {this.props.groupIdOfPressedKey} </ h1>
         <div id='guideMarker' style={guideMarkerCss} />
         <img src={require('./GuideHands.png')} alt='Mountain View' />
       </ div>
