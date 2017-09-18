@@ -15,6 +15,7 @@ class App extends Component {
 
   handleInputChangePractiseText (e) {
     let targetValue = e.target.value
+    console.log('targetValuePractise = ', e)
     this.setState({ practiseText: targetValue })
   }
 
@@ -84,7 +85,7 @@ class App extends Component {
       <div>
 
         <label> Practise Text </ label>
-        <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} />
+        <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} onKeyUp={this.handleInputChangePractiseText}/>
         <br />
         <label> Your Text</ label>
         <input type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
