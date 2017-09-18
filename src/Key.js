@@ -11,7 +11,7 @@ class Key extends Component {
       textAlign: 'center',
       textDecoration: 'none'
     }
-    this.aliasMap = { 'ஆ': 'ா', 'ஔ': 'ௌ', 'ஈ':' ீ', 'இ': ' ி' , 'ஓ': 'ோ', 'ஊ': 'ூ', 'உ': 'ு', 'ஒ': 'ொ', 'ஐ': 'ை', 'எ': 'ெ', 'ஏ': 'ே'}
+    this.aliasMap = { 'ஆ': 'ா', 'ஔ': 'ௌ', 'ஈ':'ீ', 'இ': 'ி' , 'ஓ': 'ோ', 'ஊ': 'ூ', 'உ': 'ு', 'ஒ': 'ொ', 'ஐ': 'ை', 'எ': 'ெ', 'ஏ': 'ே'}
   }
 
   render () {
@@ -32,6 +32,7 @@ class Key extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.pressedKey !== this.props.pressedKey) {
+      console.log('nextProps pressedKey :', nextProps.pressedKey, 'alias', this.aliasMap[this.props.keyName])
       if (nextProps.pressedKey === this.props.keyName || nextProps.pressedKey === this.aliasMap[this.props.keyName]) {
         this.setState({ isPressed: true })
       } else { this.setState({isPressed: false}) }

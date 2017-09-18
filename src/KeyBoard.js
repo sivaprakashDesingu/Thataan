@@ -6,7 +6,7 @@ class KeyBoard extends Component {
   constructor (props) {
     super(props)
     this.state = {currentLayer: 'layer1'}
-    this.aliasMap = ['ா', 'ௌ', ' ீ',  ' ி' ,  'ோ',  'ூ',  'ு',  'ொ',  'ை',  'ெ', 'ே']
+    this.aliasMap = ['ா', 'ௌ', 'ீ',  'ி' ,  'ோ',  'ூ',  'ு',  'ொ',  'ை',  'ெ', 'ே']
     this.layer1 = [
 	 ['Shift'],
          ['ஆ', 'அ', 'ஔ'], // leftLittleFingerGroup,
