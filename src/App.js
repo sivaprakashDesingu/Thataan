@@ -4,25 +4,27 @@ import './App.css'
 import TypingTutor from './TypingTutor'
 import Login from './Login'
 
-const AccountMenu = () => (
+const MainTab = () => (
   <div> 
     <nav>
-      <Link to="/Login"> Login </ Link>
+      <Link to="/login"> Login </ Link>
+      <Link to="/practise"> Practise </ Link>
     </ nav>
     <div>
-      <Route path="/Login" component={Login}/> 
+      <Route path="/login" component={Login}/> 
+      <Route path="/practise" component={TypingTutor}/> 
     </div>
   </ div>
   )
+
 
 class App extends Component {
   render () {
     return (
       <div>
         <BrowserRouter>
-          <AccountMenu />
+          <MainTab/>
         </ BrowserRouter>
-        <TypingTutor />
       </ div>
     )
   }
