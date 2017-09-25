@@ -97,7 +97,9 @@ class TypingTutor extends Component {
           {this.state.practiseText}
         </ div>
         <br />
-        <KeyBoard pressedKey={this.state.practiseText[this.state.userTypedText.length]} />
+      <div >
+        <KeyBoard  pressedKey={this.state.practiseText[this.state.userTypedText.length]} />
+	    </ div>
       </div>
     )
   }

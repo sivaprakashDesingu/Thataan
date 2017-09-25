@@ -98,14 +98,17 @@ class KeyBoard extends Component {
     let groupWhichContainPressedKey = this.state.currentLayer === 'layer1' ? this.isItemPresentInArrayOfArray(this.layer1, this.props.pressedKey) : this.isItemPresentInArrayOfArray(this.layer2, this.props.pressedKey)
     return (
       <div>
-        <div>
+        <div id='keyboard-div' style={{ width: '500px',
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: 'auto' }} >
           <table>
             <tbody>
               {renderedKeyGroups}
             </ tbody>
           </table>
         </ div>
-        <div>
+        <div id='guidehand-div'>
           <GuideHand groupIdOfPressedKey={groupWhichContainPressedKey} />
         </ div>
       </ div>
