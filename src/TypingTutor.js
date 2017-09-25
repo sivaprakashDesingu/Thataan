@@ -83,11 +83,19 @@ class TypingTutor extends Component {
   render () {
     return (
       <div>
+	<label> Level </ label>
+	    <select>
+		    <option value='1'> level 1</ option>
+		    <option value='1'> level 2</ option>
+		    <option value='1'> level 3</ option>
+	    </ select>
+	<br />
+	
 
-        <label> Practise Text </ label>
+        <label> Practise Text:  </ label>
         <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} onKeyUp={this.handleInputChangePractiseText}/>
         <br />
-        <label> Your Text</ label>
+        <label> Your Text: </ label> 
         <input type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
         <br />
         <div>
