@@ -8,14 +8,14 @@ class TypingTutor extends Component {
     this.handleInputChangePractiseText = this.handleInputChangePractiseText.bind(this)
     this.handleInputChangeUserTypedText = this.handleInputChangeUserTypedText.bind(this)
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
-    this.state = { practiseText: '', userTypedText: '' }
+    this.handleLevelChange = this.handleLevelChange.bind(this)
+    this.state = { practiseText: '', userTypedText: '', level: '1' }
     this.mismatchIndex = []
     this.compareIndex = -1
   }
 
   handleInputChangePractiseText (e) {
     let targetValue = e.target.value
-    console.log('targetValuePractise = ', e)
     this.setState({ practiseText: targetValue })
   }
 
@@ -24,26 +24,34 @@ class TypingTutor extends Component {
     this.setState({ userTypedText: userTypedTextInput })
   }
 
+  handleLevelChange (e) {
+    let userInput = e.target.value
+    this.setState({ level: userInput})
+    fetch('http://localhost:5000/practise_data/1/', {mode: 'cors', headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
+    }})
+	  .then((response) => response.json())
+	  .then((responseJson) => this.setState({practiseText:responseJson}))
+	  .catch((error) => console.log(error))
+  }
+
   handleOnKeyDown (e) {
     let userTypedTextInput = e.target.value
-    console.log('onchange fired ', userTypedTextInput)
     let practiseText = this.state.practiseText
     this.compareIndex = userTypedTextInput.length - 1
     if (userTypedTextInput[this.compareIndex] !== practiseText[this.compareIndex] && this.mismatchIndex.includes(this.compareIndex) === false) {
       this.mismatchIndex.push(this.compareIndex)
-      console.log('input letter doesnot match the toPractise letter', 'input :', userTypedTextInput[this.compareIndex], 'compare :', practiseText[this.compareIndex], 'compare index :', this.compareIndex)
     }
 
     if (this.mismatchIndex[this.mismatchIndex.length - 1] > this.compareIndex) {
       this.mismatchIndex.pop()
     }
-    console.log('mismatchIndex', this.mismatchIndex)
 
     this.setState({ userTypedText: userTypedTextInput })
   }
 
   highlightTypedLetters (practiseText, mismatchIndex, compareIndex) {
-    console.log('inside hightlight', practiseText, mismatchIndex)
     let practiseCharactersArray = practiseText.split('')
     practiseCharactersArray = practiseCharactersArray.map((v, i, a) => {
       if (mismatchIndex.includes(i)) {
@@ -56,7 +64,6 @@ class TypingTutor extends Component {
         return a[i]
       }
     })
-    console.log(practiseCharactersArray)
     return (practiseCharactersArray)
   }
 
@@ -84,10 +91,10 @@ class TypingTutor extends Component {
     return (
       <div>
 	<label> Level </ label>
-	    <select>
+	    <select value={this.state.level} onChange={this.handleLevelChange}>
 		    <option value='1'> level 1</ option>
-		    <option value='1'> level 2</ option>
-		    <option value='1'> level 3</ option>
+		    <option value='2'> level 2</ option>
+		    <option value='3'> level 3</ option>
 	    </ select>
 	<br />
 	

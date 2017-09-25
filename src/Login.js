@@ -11,7 +11,7 @@ async function loginUser (bindedSetState, username, password) {
     body: JSON.stringify({'username': username, 'password': password})
   }
   try {
-    let response = await fetch('http://localhost:8000/login/', init)
+    let response = await fetch('http://localhost:5000/login', init)
     let responseJson = await response.json()
     if (response.ok) {
       let jwtToken = responseJson['token']
