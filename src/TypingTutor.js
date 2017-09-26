@@ -90,31 +90,30 @@ class TypingTutor extends Component {
   render () {
     return (
       <div>
-	<label> Level </ label>
+	<label> Level </label>
 	    <select value={this.state.level} onChange={this.handleLevelChange}>
-		    <option value='1'> level 1</ option>
-		    <option value='2'> level 2</ option>
-		    <option value='3'> level 3</ option>
-	    </ select>
+		    <option value='1'> level 1</option>
+		    <option value='2'> level 2</option>
+		    <option value='3'> level 3</option>
+	    </select>
 	<br />
 	
 
-        <label> Practise Text:  </ label>
+        <label> Practise Text:  </label>
         <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} onKeyUp={this.handleInputChangePractiseText}/>
-        <br />
-        <label> Your Text: </ label> 
-        <input type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
         <br />
         <div>
           {this.highlightTypedLetters(this.state.practiseText, this.mismatchIndex, this.compareIndex)}
-        </ div>
+        </div>
         <div>
           {this.state.practiseText}
-        </ div>
+        </div>
+        <input style={{ width: '350px' }} type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
+        <br />
         <br />
       <div >
         <KeyBoard  pressedKey={this.state.practiseText[this.state.userTypedText.length]} />
-	    </ div>
+	    </div>
       </div>
     )
   }

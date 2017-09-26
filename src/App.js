@@ -7,14 +7,14 @@ import Login from './Login'
 const MainTab = () => (
   <div> 
     <nav>
-      <Link to="/login"> Login </ Link>
-      <Link to="/practise"> Practise </ Link>
-    </ nav>
+      <Link to="/login"> Login </Link>
+      <Link to="/practise"> Practise </Link>
+    </nav>
     <div>
       <Route path="/login" component={Login}/> 
       <Route path="/practise" component={TypingTutor}/> 
     </div>
-  </ div>
+  </div>
   )
 
 
@@ -24,8 +24,8 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <MainTab/>
-        </ BrowserRouter>
-      </ div>
+        </BrowserRouter>
+      </div>
     )
   }
 }

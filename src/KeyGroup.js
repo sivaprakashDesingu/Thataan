@@ -13,7 +13,7 @@ class KeyGroup extends Component {
     return (
       <div id='keyGroup'>
         {renderedKeys}
-      </ div>)
+      </div>)
   }
 
   componentDidMount () {
