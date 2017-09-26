@@ -72,7 +72,8 @@ class TypingTutor extends Component {
     var kmw = require('./static/js/keyman/keymanweb')
  
     window.addEventListener('load', function () {
-            kmw.init({attachType:'auto'});
+            kmw.init({attachType:'manual'});
+	    kmw.attachToControl(document.getElementById('userText'))
 
     kmw.osk.hide()
     kmw.addKeyboards({
@@ -100,7 +101,7 @@ class TypingTutor extends Component {
 	
 
         <label> Practise Text:  </label>
-        <input type='text' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} onKeyUp={this.handleInputChangePractiseText}/>
+        <input type='text' id='practiseText' name='practiseText' value={this.state.practiseText} onChange={this.handleInputChangePractiseText} onKeyUp={this.handleInputChangePractiseText}/>
         <br />
         <div>
           {this.highlightTypedLetters(this.state.practiseText, this.mismatchIndex, this.compareIndex)}
@@ -108,7 +109,7 @@ class TypingTutor extends Component {
         <div>
           {this.state.practiseText}
         </div>
-        <input style={{ width: '350px' }} type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
+        <input id='userText' style={{ width: '350px' }} type='text' name='userTypedText' value={this.state.userTypedText} onChange={this.handleInputChangeUserTypedText} onKeyUp={this.handleOnKeyDown} />
         <br />
         <br />
       <div >
