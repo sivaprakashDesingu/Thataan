@@ -9,7 +9,7 @@ class TypingTutor extends Component {
     this.handleInputChangeUserTypedText = this.handleInputChangeUserTypedText.bind(this)
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this)
     this.handleLevelChange = this.handleLevelChange.bind(this)
-    this.state = { practiseText: '', userTypedText: '', level: '1' }
+    this.state = { practiseText: '', userTypedText: '', level: '' }
     this.mismatchIndex = []
     this.compareIndex = -1
   }
@@ -27,7 +27,8 @@ class TypingTutor extends Component {
   handleLevelChange (e) {
     let userInput = e.target.value
     this.setState({ level: userInput})
-    fetch('http://localhost:5000/practise_data/1/', {mode: 'cors', headers: {
+    let fetchUrl = 'http://localhost:5000/practise_data/' + e.target.value + '/'
+    fetch(fetchUrl, {mode: 'cors', headers: {
       'Accept': 'application/json',
       'Content-type': 'application/json'
     }})
@@ -93,6 +94,8 @@ class TypingTutor extends Component {
       <div>
 	<label> Level </label>
 	    <select value={this.state.level} onChange={this.handleLevelChange}>
+		   
+		    <option value='' disabled selected> select a level to begin </option>
 		    <option value='1'> level 1</option>
 		    <option value='2'> level 2</option>
 		    <option value='3'> level 3</option>
@@ -106,6 +109,7 @@ class TypingTutor extends Component {
         <div>
           {this.highlightTypedLetters(this.state.practiseText, this.mismatchIndex, this.compareIndex)}
         </div>
+	<hr />
         <div>
           {this.state.practiseText}
         </div>
